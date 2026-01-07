@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="fr" class="dark">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Agence Influence - Agence de Performance</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Noto+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+            extend: {
+                colors: {
+                    "primary": "#F94F40", // Vivid Orange
+                    "primary-hover": "#FF6B5E",
+                    "secondary": "#F94F40", // Consolidated green into primary orange or white
+                    "accent-white": "#FFFFFF",
+                    "bg-main": "#0D0D0D", // Deep Black Background
+                    "bg-card": "#161616", // Dark Card Background
+                    "bg-card-lighter": "#1F1F1F",
+                    "text-main": "#FFFFFF", // Main Text White
+                    "text-muted": "#9CA3AF", // Muted Text Light Grey
+                    "border-base": "#262626", // Dark Borders
+                },
+                backgroundImage: {
+                    'gradient-metallic': 'linear-gradient(to right, #F94F40, #FFFFFF, #F94F40)',
+                    'gradient-orange': 'linear-gradient(to bottom, #F94F40, #d94234)',
+                    'gradient-dark': 'linear-gradient(to bottom, #0D0D0D, #161616)',
+                },
+                fontFamily: {
+                    "display": ["Space Grotesk", "sans-serif"],
+                    "body": ["Noto Sans", "sans-serif"],
+                },
+                borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                boxShadow: {
+                    'glow': '0 0 25px -5px rgba(249, 79, 64, 0.4)',
+                    'glow-strong': '0 0 50px -10px rgba(249, 79, 64, 0.6)',
+                    'glow-subtle': '0 0 20px -5px rgba(249, 79, 64, 0.15)',
+                    'card': '0 10px 30px -5px rgba(0, 0, 0, 0.5)',
+                }
+            },
+            },
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0D0D0D; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #333333; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #F94F40; 
+        }
+        .text-stroke-1 {
+            -webkit-text-stroke: 1px rgba(255,255,255,0.1);
+        }
+        input[type=range] {
+            -webkit-appearance: none; 
+            background: transparent; 
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 24px;
+            width: 24px;
+            border-radius: 50%;
+            background: #F94F40;
+            cursor: pointer;
+            margin-top: -10px; 
+            box-shadow: 0 0 15px rgba(249, 79, 64, 0.6);
+            border: 2px solid #0D0D0D;
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 4px;
+            cursor: pointer;
+            background: #333333;
+            border-radius: 2px;
+        }
+        .metallic-text {
+            background: linear-gradient(to right, #F94F40, #FFFFFF, #F94F40);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0px 0px 20px rgba(249, 79, 64, 0.3);
+            background-size: 200% auto;
+            animation: shine 4s linear infinite;
+        }
+        @keyframes shine {
+            to {
+                background-position: 200% center;
+            }
+        }
+        .chart-gradient-stop-1 { stop-color: #F94F40; stop-opacity: 0.4; }
+        .chart-gradient-stop-2 { stop-color: #F94F40; stop-opacity: 0; }
+        .glass-panel {
+            background: rgba(22, 22, 22, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+    </style>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body class="bg-bg-main min-h-screen flex flex-col font-display text-text-main selection:bg-primary selection:text-white overflow-x-hidden">
+
+    <!-- Header -->
+    <header class="sticky top-0 z-50 w-full border-b border-white/5 bg-bg-main/80 backdrop-blur-md">
+        <div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center gap-2">
+                <div class="flex h-8 w-8 items-center justify-center rounded bg-primary text-white border border-primary shadow-glow">
+                    <span class="material-symbols-outlined">bolt</span>
+                </div>
+                <h1 class="text-xl font-bold tracking-tight text-white">AGENCE INFLUENCE</h1>
+            </div>
+            <nav class="hidden md:flex items-center gap-8">
+                <a class="text-sm font-medium text-text-muted hover:text-primary transition-colors" href="#clips">Clips</a>
+                <a class="text-sm font-medium text-text-muted hover:text-primary transition-colors" href="#gains">Commission</a>
+                <a class="text-sm font-medium text-text-muted hover:text-primary transition-colors" href="#faq">FAQ</a>
+            </nav>
+            <button class="hidden md:flex items-center justify-center rounded-lg bg-white/5 px-5 py-2 text-sm font-bold text-white transition-all hover:bg-primary hover:text-white hover:shadow-glow border border-white/10 hover:border-primary">
+                Postuler
+            </button>
+            <button class="md:hidden text-white hover:text-primary transition-colors">
+                <span class="material-symbols-outlined">menu</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <!-- Hero Section -->
+        <section class="relative overflow-hidden pt-12 pb-20 lg:pt-20 lg:pb-32 bg-bg-main">
+            <!-- Background Glows -->
+            <div class="absolute -top-40 -right-40 h-[600px] w-[600px] rounded-full bg-primary/10 blur-[150px] mix-blend-screen"></div>
+            <div class="absolute top-40 -left-20 h-[400px] w-[400px] rounded-full bg-white/5 blur-[100px]"></div>
+            <div class="absolute bottom-0 right-1/2 translate-x-1/2 h-[500px] w-[700px] bg-primary/5 blur-[150px] rounded-full"></div>
+
+            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <!-- Text Content -->
+                    <div class="flex flex-col gap-6 text-center lg:text-left">
+                        <div class="inline-flex items-center justify-center lg:justify-start gap-2 text-primary text-sm font-bold uppercase tracking-wider">
+                            <span class="relative flex h-2 w-2">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                            </span>
+                            <span class="text-text-muted">Places limitées pour Q4</span>
+                        </div>
+                        <h1 class="text-4xl sm:text-5xl lg:text-7xl font-black leading-tight tracking-tight text-white">
+                            Tu payes que si <span class="metallic-text">tu vends PLUS.</span>
+                        </h1>
+                        <p class="text-lg text-text-muted max-w-xl mx-auto lg:mx-0 font-body">
+                            Agence de performance pour créateurs digitaux. Nous transformons votre contenu en machine à cash. 0€ de frais fixes. 100% Commission.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
+                            <button class="flex items-center justify-center gap-2 rounded-lg bg-primary px-8 py-4 text-base font-bold text-white transition-all hover:bg-primary-hover hover:shadow-glow border border-primary shadow-[0_0_30px_rgba(249,79,64,0.25)]">
+                                <span>Postuler au programme</span>
+                                <span class="material-symbols-outlined text-lg">arrow_forward</span>
+                            </button>
+                            <button class="flex items-center justify-center gap-2 rounded-lg border border-white/10 bg-white/5 px-8 py-4 text-base font-bold text-text-muted transition-all hover:bg-white/10 hover:text-white hover:border-white/20">
+                                <span>Voir les résultats</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Visual Mockup (Chart) -->
+                    <div class="relative w-full max-w-lg mx-auto lg:max-w-none">
+                        <div class="relative z-10 rounded-xl glass-panel p-6 shadow-card transition-transform hover:scale-[1.01] duration-500 group">
+                            <div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-xl"></div>
+                            
+                            <div class="flex justify-between items-start mb-6 relative">
+                                <div>
+                                    <p class="text-sm text-text-muted font-medium">Croissance Revenus (30j)</p>
+                                    <h3 class="text-4xl font-bold text-primary mt-1">+182%</h3>
+                                </div>
+                                <div class="bg-primary/10 p-2 rounded-lg text-primary border border-primary/20">
+                                    <span class="material-symbols-outlined">trending_up</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Custom CSS Chart -->
+                            <div class="h-32 w-full relative">
+                                <svg viewBox="0 0 478 150" fill="none" class="w-full h-full text-primary overflow-visible" preserveAspectRatio="none">
+                                    <defs>
+                                        <linearGradient id="chartGradient" x1="0" x2="0" y1="0" y2="1">
+                                            <stop offset="0%" class="chart-gradient-stop-1"></stop>
+                                            <stop offset="100%" class="chart-gradient-stop-2"></stop>
+                                        </linearGradient>
+                                    </defs>
+                                    <path vector-effect="non-scaling-stroke" d="M0 109C18 109 18 21 36 21C54 21 54 41 72 41C90 41 90 93 108 93C127 93 127 33 145 33C163 33 163 101 181 101C199 101 199 61 217 61C236 61 236 45 254 45C272 45 272 121 290 121C308 121 308 149 326 149C344 149 344 1 363 1C381 1 381 81 399 81C417 81 417 129 435 129C453 129 453 25 472 25" stroke="#F94F40" stroke-width="3" stroke-linecap="round" style="filter: drop-shadow(0px 0px 8px rgba(249, 79, 64, 0.4));"/>
+                                    <path d="M0 109C18 109 18 21 36 21C54 21 54 41 72 41C90 41 90 93 108 93C127 93 127 33 145 33C163 33 163 101 181 101C199 101 199 61 217 61C236 61 236 45 254 45C272 45 272 121 290 121C308 121 308 149 326 149C344 149 344 1 363 1C381 1 381 81 399 81C417 81 417 129 435 129C453 129 453 25 472 25 V 150 H 0 Z" fill="url(#chartGradient)" opacity="0.5"/>
+                                </svg>
+                            </div>
+
+                            <div class="mt-4 flex gap-2 relative">
+                                <span class="px-2 py-1 rounded bg-primary text-white text-xs font-bold border border-primary/50 shadow-glow-subtle">+45k€ net</span>
+                                <span class="px-2 py-1 rounded bg-white/10 text-white text-xs font-bold border border-white/10">Record mensuel</span>
+                            </div>
+                        </div>
+
+                        <!-- Floating Badge -->
+                        <div class="absolute -right-4 -bottom-6 z-20 w-48 rounded-lg bg-bg-card-lighter p-4 shadow-xl border border-white/10 hidden sm:block">
+                            <div class="flex items-center gap-3 mb-3">
+                                <div class="bg-primary/20 p-1.5 rounded text-primary border border-primary/20">
+                                    <span class="material-symbols-outlined text-sm">movie</span>
+                                </div>
+                                <span class="text-xs font-bold text-white">Production</span>
+                            </div>
+                            <div class="space-y-2">
+                                <div class="flex justify-between text-xs text-text-muted">
+                                    <span>Clips/mois</span>
+                                    <span class="text-white font-bold">40+</span>
+                                </div>
+                                <div class="w-full bg-black rounded-full h-1.5 border border-white/5">
+                                    <div class="bg-primary h-1.5 rounded-full w-[85%] shadow-[0_0_10px_rgba(249,79,64,0.5)]"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Bar -->
+        <section class="border-y border-white/5 bg-[#141414] py-8">
+            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-white/10">
+                    <div class="flex flex-col gap-1">
+                        <span class="text-3xl font-bold text-white tracking-tight">150k€</span>
+                        <span class="text-xs uppercase tracking-wider text-text-muted opacity-90">Générés clients</span>
+                    </div>
+                    <div class="flex flex-col gap-1">
+                        <span class="text-3xl font-bold text-white tracking-tight">0€</span>
+                        <span class="text-xs uppercase tracking-wider text-text-muted opacity-90">Frais de départ</span>
+                    </div>
+                    <div class="flex flex-col gap-1">
+                        <span class="text-3xl font-bold text-white tracking-tight">40+</span>
+                        <span class="text-xs uppercase tracking-wider text-text-muted opacity-90">Clips par mois</span>
+                    </div>
+                    <div class="flex flex-col gap-1">
+                        <span class="text-3xl font-bold text-white tracking-tight">1.2M</span>
+                        <span class="text-xs uppercase tracking-wider text-text-muted opacity-90">Vues organiques</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 1: Clips / Strategy -->
+        <section id="clips" class="py-20 bg-bg-main relative overflow-hidden">
+             <!-- Decor -->
+             <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 blur-[120px] rounded-full pointer-events-none"></div>
+
+            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    <!-- Text -->
+                    <div>
+                        <div class="flex items-center gap-2 text-primary mb-4">
+                            <span class="material-symbols-outlined">auto_videocam</span>
+                            <span class="font-bold uppercase tracking-wide text-sm">Notre arme secrète</span>
+                        </div>
+                        <h2 class="text-3xl md:text-5xl font-black text-white mb-6 leading-tight">
+                            Ton équipe de clips <span class="metallic-text">dédiée.</span>
+                        </h2>
+                        <p class="text-text-muted text-lg mb-10">
+                            Le <strong class="text-white">"Clip Farming"</strong> est la stratégie exacte qui a rendu <strong class="text-white">Andrew Tate</strong> mondialement célèbre et a fait exploser les ventes de ses formations. C'est aussi cette méthode qui a permis au streamer <strong class="text-white">Amine</strong> de devenir le numéro 1 en France. On transforme ton contenu existant en une armée de soldats digitaux qui inondent les feeds et vendent pour toi 24/7.
+                        </p>
+
+                        <div class="space-y-8 relative pl-2 mb-10">
+                            <!-- Vertical line -->
+                            <div class="absolute left-[19px] top-4 bottom-8 w-0.5 bg-gradient-to-b from-primary to-transparent opacity-50"></div>
+
+                            <div class="relative flex gap-5">
+                                <div class="shrink-0 w-10 h-10 rounded-xl bg-[#1A1A1A] border border-white/10 text-primary flex items-center justify-center z-10 shadow-lg ring-1 ring-white/5">
+                                    <span class="material-symbols-outlined text-lg">travel_explore</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-white text-lg">1. Sourcing & Détection</h4>
+                                    <p class="text-sm text-text-muted mt-1 leading-relaxed">
+                                        Nos experts scannent tes <span class="text-white font-medium">VODs, Lives Twitch et Podcasts</span> pour isoler les "moments viraux" et les segments problème-solution. On extrait l'or brut de ton contenu existant.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="relative flex gap-5">
+                                <div class="shrink-0 w-10 h-10 rounded-xl bg-[#1A1A1A] border border-white/10 text-primary flex items-center justify-center z-10 shadow-lg ring-1 ring-white/5">
+                                    <span class="material-symbols-outlined text-lg">factory</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-white text-lg">2. La Machine à Clips</h4>
+                                    <p class="text-sm text-text-muted mt-1 leading-relaxed">
+                                        Volume industriel : <span class="text-white font-medium">dizaines de clips par semaine</span>. Montage dynamique, hooks psychologiques et intégration de <span class="text-white font-medium">CTAs invisibles</span> vers ton lien en bio. On vend sans avoir l'air de vendre.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="relative flex gap-5">
+                                <div class="shrink-0 w-10 h-10 rounded-xl bg-[#1A1A1A] border border-white/10 text-primary flex items-center justify-center z-10 shadow-lg ring-1 ring-white/5">
+                                    <span class="material-symbols-outlined text-lg">monitoring</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-white text-lg">3. Optimisation & Conquête</h4>
+                                    <p class="text-sm text-text-muted mt-1 leading-relaxed">
+                                        Chaque clip est un test. On analyse la performance en temps réel, on itère, et on va chercher de <span class="text-white font-medium">nouvelles audiences qualifiées</span> hors de ta base actuelle.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-wrap gap-3">
+                            <div class="flex items-center gap-2 px-3 py-1.5 rounded bg-[#1A1A1A] border border-white/10 text-xs font-bold text-text-muted hover:text-white hover:border-primary transition-colors cursor-default shadow-sm">
+                                <span class="material-symbols-outlined text-sm">play_circle</span> TikTok
+                            </div>
+                            <div class="flex items-center gap-2 px-3 py-1.5 rounded bg-[#1A1A1A] border border-white/10 text-xs font-bold text-text-muted hover:text-white hover:border-primary transition-colors cursor-default shadow-sm">
+                                <span class="material-symbols-outlined text-sm">photo_camera</span> Reels
+                            </div>
+                             <div class="flex items-center gap-2 px-3 py-1.5 rounded bg-[#1A1A1A] border border-white/10 text-xs font-bold text-text-muted hover:text-white hover:border-primary transition-colors cursor-default shadow-sm">
+                                <span class="material-symbols-outlined text-sm">smart_display</span> Shorts
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Visuals (Phone Mockup) -->
+                    <div class="relative h-[650px] w-full flex items-center justify-center perspective-[1500px]">
+                        
+                        <!-- Floating dashboard elements behind -->
+                        <div class="absolute top-1/2 left-1/2 -translate-x-[65%] -translate-y-[45%] w-[380px] md:w-[480px] h-[340px] bg-bg-card-lighter border border-white/10 rounded-xl shadow-2xl p-5 transform -rotate-6 z-0 hidden sm:block opacity-80 hover:opacity-100 transition-opacity duration-500 hover:rotate-0 hover:z-20 hover:scale-105 backdrop-blur-md">
+                             <div class="flex items-center justify-between mb-4 border-b border-white/10 pb-3">
+                                <div class="flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-primary text-lg">analytics</span>
+                                    <span class="text-sm font-bold text-white">Performance Réseau</span>
+                                </div>
+                                <div class="flex gap-1.5">
+                                    <div class="w-2 h-2 rounded-full bg-white/10"></div>
+                                    <div class="w-2 h-2 rounded-full bg-white/10"></div>
+                                    <div class="w-2 h-2 rounded-full bg-white/10"></div>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-3 gap-3 mb-4">
+                                <div class="bg-black/20 p-2 rounded border border-white/5">
+                                    <p class="text-[10px] text-text-muted">Vues (24h)</p>
+                                    <p class="text-lg font-bold text-white">2.4M</p>
+                                    <p class="text-[10px] text-primary">▲ +120%</p>
+                                </div>
+                                <div class="bg-black/20 p-2 rounded border border-white/5">
+                                    <p class="text-[10px] text-text-muted">Shares</p>
+                                    <p class="text-lg font-bold text-white">45k</p>
+                                    <p class="text-[10px] text-primary">▲ +85%</p>
+                                </div>
+                                <div class="bg-black/20 p-2 rounded border border-white/5">
+                                    <p class="text-[10px] text-text-muted">Conv.</p>
+                                    <p class="text-lg font-bold text-white">3.2%</p>
+                                    <p class="text-[10px] text-primary">▲ +0.5%</p>
+                                </div>
+                            </div>
+                            <div class="space-y-2">
+                                <div class="flex items-center justify-between bg-black/20 p-2 rounded border-l-2 border-primary">
+                                    <div class="flex items-center gap-2">
+                                        <span class="material-symbols-outlined text-text-muted text-sm">play_circle</span>
+                                        <span class="text-xs text-text-muted">Clip_Matrix_v4.mp4</span>
+                                    </div>
+                                    <span class="text-xs font-bold text-white">842k Vues</span>
+                                </div>
+                                 <div class="flex items-center justify-between bg-black/20 p-2 rounded border-l-2 border-primary/50">
+                                    <div class="flex items-center gap-2">
+                                        <span class="material-symbols-outlined text-text-muted text-sm">play_circle</span>
+                                        <span class="text-xs text-text-muted">Clip_Money_Mindset.mp4</span>
+                                    </div>
+                                    <span class="text-xs font-bold text-white">621k Vues</span>
+                                </div>
+                                 <div class="flex items-center justify-between bg-black/20 p-2 rounded border-l-2 border-primary/30">
+                                    <div class="flex items-center gap-2">
+                                        <span class="material-symbols-outlined text-text-muted text-sm">play_circle</span>
+                                        <span class="text-xs text-text-muted">Clip_Escape_9-5.mp4</span>
+                                    </div>
+                                    <span class="text-xs font-bold text-white">410k Vues</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Phone Frame -->
+                        <div class="relative z-10 w-[300px] h-[600px] bg-black rounded-[3rem] border-[6px] border-[#262626] shadow-[0_0_50px_rgba(249,79,64,0.15)] overflow-hidden group transition-transform hover:scale-[1.02] duration-500">
+                            <!-- Notch -->
+                            <div class="absolute top-0 inset-x-0 h-7 bg-black z-30 flex justify-center">
+                                <div class="w-24 h-5 bg-black rounded-b-xl border border-[#333] border-t-0"></div>
+                            </div>
+
+                            <!-- Screen Content (Simulated Video) -->
+                            <div class="absolute inset-0 bg-gray-900 bg-[url('https://lh3.googleusercontent.com/aida-public/AB6AXuBUid5oQu5dvJUuCnGMSOAaf3kkAW0iGs7Ty1NJMmHTWy_bNhMX807eoVR8WQhFElkGZ3iaAxaMQDIr98jzovu6qUvlYETNsLdYzcZzRuNdJuqYxt7Br9Yd28YHZOeNayE2xRhb-DCFzRuJNKNDtCUJgEgpkmaTx-XQcMCMiSt1IVDBtt-UjJkz2Ruk1b171vuh8kj5Qc9OhPv-gnCa5VOlDojWsYjlXhvi8pXLHWMTOMvQbHNrBlKrEsnimCdXO1TdAF54gmn8Vok')] bg-cover bg-center">
+                                <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/90"></div>
+                                
+                                <!-- UI Overlay -->
+                                <div class="absolute top-10 inset-x-4 flex justify-between items-start z-20">
+                                    <div class="bg-black/40 backdrop-blur-md border border-white/10 px-2 py-1 rounded-full flex items-center gap-1.5">
+                                        <div class="w-1.5 h-1.5 bg-primary rounded-full animate-pulse shadow-glow"></div>
+                                        <span class="text-[10px] font-bold text-white uppercase tracking-wider">Viral</span>
+                                    </div>
+                                </div>
+
+                                <!-- Right Actions -->
+                                <div class="absolute right-3 bottom-24 flex flex-col gap-5 items-center z-20">
+                                    <div class="flex flex-col items-center gap-1">
+                                        <div class="w-10 h-10 rounded-full bg-black/40 backdrop-blur-sm flex items-center justify-center text-white border border-white/10 hover:bg-white/10 transition-colors cursor-pointer group-hover:border-primary/50">
+                                            <span class="material-symbols-outlined text-2xl fill-current text-white group-hover:text-primary transition-colors">favorite</span>
+                                        </div>
+                                        <span class="text-[10px] font-bold text-white">42K</span>
+                                    </div>
+                                    <div class="flex flex-col items-center gap-1">
+                                        <div class="w-10 h-10 rounded-full bg-black/40 backdrop-blur-sm flex items-center justify-center text-white border border-white/10 hover:bg-white/10 transition-colors cursor-pointer">
+                                            <span class="material-symbols-outlined text-2xl">chat_bubble</span>
+                                        </div>
+                                        <span class="text-[10px] font-bold text-white">840</span>
+                                    </div>
+                                    <div class="flex flex-col items-center gap-1">
+                                        <div class="w-10 h-10 rounded-full bg-black/40 backdrop-blur-sm flex items-center justify-center text-white border border-white/10 hover:bg-white/10 transition-colors cursor-pointer">
+                                            <span class="material-symbols-outlined text-2xl">share</span>
+                                        </div>
+                                        <span class="text-[10px] font-bold text-white">1.2K</span>
+                                    </div>
+                                </div>
+
+                                <!-- Bottom Info -->
+                                <div class="absolute bottom-6 inset-x-4 z-20 space-y-2">
+                                    <div class="flex items-center gap-2 mb-2">
+                                        <div class="w-8 h-8 rounded-full bg-gray-200 border border-white/20 overflow-hidden">
+                                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGrTeibRG_ohwcmCx-6n5fFk2D_2nDlGZTAfw8jVK4R88DfB3nap2X48r76-l9e0JDxFNPB23_QKdWBfdzxY2zlSUZp3ERBjpW87Mr0k_0_YPHUWbV6Xvd6IQWyQLDRNvvOa4dWpkrqG-_lPD2tGdLg8X0vUOBZGQ38X9kMlNyTLsVgNNI9oKT0DM2jvWasdZqlr10jQ7Fxm4IzorLBi16rPV35u4SsxRV0cRNeieqTcYgJiLT2Wzk4pkHmeXdMXBCbNavHqBtFGo" alt="Avatar" class="w-full h-full object-cover">
+                                        </div>
+                                        <span class="text-sm font-bold text-white shadow-black drop-shadow-md">Creator Name</span>
+                                        <span class="bg-primary text-white text-[9px] font-bold px-1 rounded-sm">SUIVRE</span>
+                                    </div>
+                                    <p class="text-xs text-white/90 line-clamp-2 leading-relaxed font-medium drop-shadow-md">
+                                        Arrête de vendre ton temps ! Voici la méthode exacte pour scaler ton offre. 🚀 <span class="text-primary">#business #growth</span>
+                                    </p>
+                                    <div class="flex items-center gap-2 mt-2 bg-black/60 backdrop-blur-md p-2 rounded border border-primary/30 animate-pulse shadow-[0_0_15px_rgba(249,79,64,0.1)]">
+                                        <span class="material-symbols-outlined text-primary text-sm">link</span>
+                                        <span class="text-[10px] font-bold text-white uppercase tracking-wide">Lien en bio : Formation Gratuite</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                         <!-- Stats bubbles -->
+                        <div class="absolute top-[80px] -left-4 md:-left-12 bg-[#1A1A1A]/95 backdrop-blur-xl border border-white/10 p-4 rounded-xl shadow-xl z-20 w-48 transform -rotate-3 hover:rotate-0 transition-transform duration-300 border-l-4 border-l-primary">
+                            <div class="flex justify-between items-start mb-2">
+                                <span class="text-[10px] text-text-muted font-bold uppercase">Portée Hebdo</span>
+                                <span class="text-primary material-symbols-outlined text-sm">bar_chart</span>
+                            </div>
+                            <div class="text-2xl font-black text-white">+324%</div>
+                            <div class="h-1 w-full bg-black/50 rounded-full mt-2 overflow-hidden">
+                                <div class="h-full bg-primary w-[80%] animate-[pulse_3s_infinite]"></div>
+                            </div>
+                            <div class="mt-1 text-[9px] text-text-muted text-right">vs semaine dernière</div>
+                        </div>
+                        
+                         <div class="absolute bottom-[100px] -right-4 md:-right-12 bg-[#1A1A1A]/95 backdrop-blur-xl border border-white/10 p-4 rounded-xl shadow-xl z-20 w-52 transform rotate-3 hover:rotate-0 transition-transform duration-300">
+                            <div class="flex items-center gap-3 mb-3">
+                                <div class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary border border-primary/30">
+                                    <span class="material-symbols-outlined text-sm">ads_click</span>
+                                </div>
+                                <div>
+                                    <div class="text-[10px] text-text-muted font-bold uppercase">Taux de Clics</div>
+                                    <div class="text-lg font-bold text-white">4.8% <span class="text-[10px] text-primary font-normal">+1.2%</span></div>
+                                </div>
+                            </div>
+                            <div class="space-y-1.5">
+                                <div class="flex justify-between text-[9px] text-text-muted">
+                                    <span>Visites lien</span>
+                                    <span class="text-white font-bold">1,245</span>
+                                </div>
+                                <div class="flex justify-between text-[9px] text-text-muted">
+                                    <span>Leads capturés</span>
+                                    <span class="text-white font-bold">342</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Glow behind phone -->
+                        <div class="absolute inset-0 bg-gradient-to-tr from-primary/10 to-transparent rounded-full blur-[80px] -z-10 animate-pulse"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Community (Discord/Telegram) -->
+        <section class="py-20 relative overflow-hidden bg-[#111111] border-t border-white/5">
+             <div class="absolute top-0 right-0 -translate-x-1/2 translate-x-1/2 w-96 h-96 bg-primary/5 blur-[100px] rounded-full"></div>
+             
+            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    
+                    <!-- Text Content -->
+                    <div class="order-2 lg:order-1">
+                        <div class="inline-flex items-center gap-2 rounded-full border border-primary bg-primary/10 px-3 py-1 text-xs font-bold text-primary mb-6 shadow-glow-subtle">
+                            <span class="material-symbols-outlined text-sm">star</span>
+                            BONUS EXCLUSIF
+                        </div>
+                        <h2 class="text-3xl md:text-5xl font-black text-white mb-6 leading-tight">
+                            On muscle aussi <br/><span class="text-primary">ta communauté.</span>
+                        </h2>
+                        <p class="text-text-muted text-lg mb-8 font-body">
+                            L'audience c'est bien, une armée fidèle c'est mieux. Nous transformons vos abonnés en membres actifs sur Discord & Telegram pour maximiser la LTV.
+                        </p>
+
+                        <div class="space-y-6">
+                            <div class="flex gap-4">
+                                <div class="shrink-0 flex h-10 w-10 items-center justify-center rounded-lg bg-black/40 border border-white/10 text-primary">
+                                    <span class="material-symbols-outlined">forum</span>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-white text-lg">Mise en place d'espaces privés</h3>
+                                    <p class="text-sm text-text-muted">Structure complète Discord & Telegram optimisés pour la conversion et l'exclusivité.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4">
+                                <div class="shrink-0 flex h-10 w-10 items-center justify-center rounded-lg bg-black/40 border border-white/10 text-primary">
+                                    <span class="material-symbols-outlined">neurology</span>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-white text-lg">Scénarios automatiques</h3>
+                                    <p class="text-sm text-text-muted">Jeux concours, rappels, annonces… Tout est scripté pour engager.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4">
+                                <div class="shrink-0 flex h-10 w-10 items-center justify-center rounded-lg bg-black/40 border border-white/10 text-white">
+                                    <span class="material-symbols-outlined">monetization_on</span>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-white text-lg">Objectif : Engagement & Ventes</h3>
+                                    <p class="text-sm text-text-muted">Plus d'engagement, donc plus de ventes sur le long terme. On ne laisse pas l'argent sur la table.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Toggle Buttons -->
+                        <div class="mt-8 flex gap-4">
+                            <button onclick="document.getElementById('visual-discord').classList.remove('hidden'); document.getElementById('visual-telegram').classList.add('hidden');" class="flex items-center gap-2 px-4 py-2 bg-black/20 border border-white/10 rounded-lg hover:bg-white/10 hover:border-primary hover:text-white transition-all cursor-pointer focus:ring-2 focus:ring-primary/50 outline-none group">
+                                <svg class="w-5 h-5 text-white/60 group-hover:text-[#5865F2] fill-current transition-colors" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 127 96"><path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.11,77.11,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.82,105.82,0,0,0,126.6,80.22c1.24-23.62-3.27-47.56-18.9-72.15ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,46,96.12,53,91.08,65.69,84.69,65.69Z"/></svg>
+                                <span class="text-white/80 group-hover:text-white font-bold">Discord</span>
+                            </button>
+                             <button onclick="document.getElementById('visual-discord').classList.add('hidden'); document.getElementById('visual-telegram').classList.remove('hidden');" class="flex items-center gap-2 px-4 py-2 bg-black/20 border border-white/10 rounded-lg hover:bg-white/10 hover:border-primary hover:text-white transition-all cursor-pointer focus:ring-2 focus:ring-primary/50 outline-none group">
+                                <svg class="w-5 h-5 text-white/60 group-hover:text-[#229ED9] fill-current transition-colors" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                                <span class="text-white/80 group-hover:text-white font-bold">Telegram</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Mockups (Discord/Telegram) -->
+                    <div class="order-1 lg:order-2 relative perspective-[1000px]">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-primary/5 to-transparent rounded-xl transform rotate-3 scale-105 -z-10 border border-primary/10"></div>
+                        
+                        <!-- DISCORD MOCKUP -->
+                        <div id="visual-discord" class="transition-all duration-500 ease-in-out">
+                            <div class="relative z-10 rounded-xl bg-[#1e2124] border border-[#2f3136] shadow-2xl overflow-hidden group hover:scale-[1.01] transition-transform duration-500">
+                                <!-- Header -->
+                                <div class="flex items-center justify-between bg-[#2f3136] px-4 py-3 border-b border-[#202225]">
+                                    <div class="flex items-center gap-2 text-gray-400">
+                                        <span class="material-symbols-outlined text-lg">tag</span>
+                                        <span class="font-bold text-white text-sm">concours-exclusifs</span>
+                                    </div>
+                                    <div class="flex gap-3 text-gray-400">
+                                        <span class="material-symbols-outlined text-lg">notifications</span>
+                                        <span class="material-symbols-outlined text-lg">people</span>
+                                    </div>
+                                </div>
+                                <!-- Chat Area -->
+                                <div class="p-4 space-y-5">
+                                    <!-- Message 1 (Bot) -->
+                                    <div class="flex gap-3 hover:bg-[#2f3136]/50 p-2 -ml-2 rounded transition-colors">
+                                        <div class="mt-0.5 relative">
+                                            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-orange-700 flex items-center justify-center text-white font-bold text-sm shadow-glow border border-primary/30">
+                                                AI
+                                            </div>
+                                            <div class="absolute -bottom-1 -right-1 bg-[#5865F2] text-[8px] text-white px-1 rounded-sm flex items-center shadow-sm">
+                                                <span class="font-bold">BOT</span>
+                                            </div>
+                                        </div>
+                                        <div class="flex-1">
+                                            <div class="flex items-baseline gap-2 mb-1">
+                                                <span class="font-bold text-white text-sm hover:underline cursor-pointer">Agence Influence Bot</span>
+                                                <span class="text-[10px] text-gray-400">Aujourd'hui à 14:02</span>
+                                            </div>
+                                            <div class="text-gray-300 text-sm leading-relaxed">
+                                                <p class="mb-2">🚨 <strong class="text-white">CONCOURS FLASH :</strong> Gagne ton audit complet (Valeur 1500€) !</p>
+                                                <p>Pour participer, c'est automatique : réagis avec la flamme ci-dessous.</p>
+                                            </div>
+                                            <!-- Embed -->
+                                            <div class="mt-3 bg-[#2f3136] border-l-4 border-primary rounded p-3 max-w-sm">
+                                                <div class="font-bold text-primary text-xs mb-1">AUTOMATION V2.4</div>
+                                                <div class="font-bold text-white text-sm">🎁 Pack Audit Performance</div>
+                                                <p class="text-gray-400 text-xs mt-1 animate-pulse">Fin du tirage dans : 00h 58m 12s</p>
+                                            </div>
+                                            <!-- Reactions -->
+                                            <div class="mt-2 flex items-center gap-2">
+                                                <div class="bg-[#3b405a] border border-primary/50 rounded-lg px-2 py-1 flex items-center gap-1.5 cursor-pointer hover:bg-[#40444b] transition-colors group/reaction">
+                                                    <span class="text-base group-hover/reaction:scale-110 transition-transform">🔥</span>
+                                                    <span class="text-xs font-bold text-primary">842</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Message 2 (Success) -->
+                                    <div class="flex gap-3 hover:bg-[#2f3136]/50 p-2 -ml-2 rounded transition-colors border-l-2 border-green-500/30 bg-green-500/5">
+                                        <div class="w-10 h-10 rounded-full bg-[#5865F2] flex items-center justify-center text-white shrink-0">
+                                            <span class="material-symbols-outlined text-lg">smart_toy</span>
+                                        </div>
+                                        <div>
+                                            <div class="flex items-baseline gap-2 mb-1">
+                                                <span class="font-bold text-white text-sm">AutoMod</span>
+                                                <span class="bg-[#5865F2] text-[8px] text-white px-1 rounded-sm font-bold">BOT</span>
+                                                <span class="text-[10px] text-gray-400">À l'instant</span>
+                                            </div>
+                                            <p class="text-gray-300 text-sm">
+                                                <span class="text-primary font-bold">@User</span> Participation validée ! 🎫 <br/>
+                                                Check tes DMs, je t'ai envoyé un bonus secret en attendant le résultat... 👀
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <!-- Typing -->
+                                    <div class="flex items-center gap-2 pl-2">
+                                        <div class="w-4 h-4 rounded-full bg-gray-700 flex items-center justify-center">
+                                            <span class="material-symbols-outlined text-[10px] text-gray-400 animate-spin">sync</span>
+                                        </div>
+                                        <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wide animate-pulse">Agence Influence Bot écrit...</span>
+                                    </div>
+                                </div>
+                                <!-- Input -->
+                                <div class="bg-[#2f3136] p-3 mx-4 mb-4 rounded-lg flex items-center gap-3 text-gray-500 cursor-not-allowed">
+                                    <div class="w-6 h-6 rounded-full bg-gray-600/30 flex items-center justify-center">
+                                        <span class="material-symbols-outlined text-sm">add</span>
+                                    </div>
+                                    <span class="text-xs font-medium">Vous n'avez pas la permission d'envoyer des messages.</span>
+                                </div>
+                            </div>
+                            <!-- Floating Stat -->
+                            <div class="absolute -bottom-5 -right-5 z-20 bg-[#1A1A1A] border border-white/10 p-4 rounded-xl shadow-[0_0_30px_rgba(249,79,64,0.2)] flex flex-col gap-1 items-center">
+                                <span class="text-[10px] uppercase text-text-muted font-bold tracking-widest">Taux d'engagement</span>
+                                <div class="text-2xl font-black text-white metallic-text">+320%</div>
+                                <div class="flex items-center gap-1 text-[10px] text-white bg-primary/20 px-1.5 py-0.5 rounded border border-primary/30">
+                                    <span class="material-symbols-outlined text-xs">trending_up</span> vs posts classiques
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- TELEGRAM MOCKUP -->
+                        <div id="visual-telegram" class="hidden transition-all duration-500 ease-in-out">
+                            <div class="relative z-10 rounded-xl bg-[#17212b] border border-[#2b5278]/50 shadow-2xl overflow-hidden group hover:scale-[1.01] transition-transform duration-500">
+                                <!-- Header -->
+                                <div class="flex items-center justify-between bg-[#17212b] px-4 py-3 border-b border-[#0e1621]">
+                                    <div class="flex items-center gap-3">
+                                        <span class="material-symbols-outlined text-white text-lg">arrow_back</span>
+                                        <div class="flex flex-col">
+                                            <span class="font-bold text-white text-sm">Agence Influence 📢</span>
+                                            <span class="text-[10px] text-gray-400">14.2K abonnés</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex gap-3 text-gray-400">
+                                        <span class="material-symbols-outlined text-lg">search</span>
+                                        <span class="material-symbols-outlined text-lg">more_vert</span>
+                                    </div>
+                                </div>
+                                <!-- Chat Area -->
+                                <div class="p-4 space-y-4 bg-[#0e1621] h-full min-h-[300px] relative">
+                                    <div class="flex justify-center mb-4">
+                                        <span class="bg-[#000000]/40 text-gray-400 text-[10px] px-2 py-0.5 rounded-full">Aujourd'hui</span>
+                                    </div>
+
+                                    <!-- Post -->
+                                    <div class="bg-[#182533] p-0 rounded-lg overflow-hidden max-w-sm ml-auto mr-auto border border-[#2b5278]/30 shadow-lg">
+                                        <div class="h-32 bg-gradient-to-r from-[#229ED9] to-primary/50 flex items-center justify-center relative overflow-hidden">
+                                            <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20"></div>
+                                            <span class="material-symbols-outlined text-4xl text-white drop-shadow-md">redeem</span>
+                                        </div>
+                                        <div class="p-3">
+                                            <div class="text-white text-sm font-bold mb-1">🎁 GIVEAWAY EXCLUSIF</div>
+                                            <p class="text-gray-300 text-xs leading-relaxed mb-3">
+                                                On lance le plus gros concours de l'année. <br/>
+                                                <span class="text-primary">3x Audits Complets (Valeur 4500€)</span> à gagner pour les membres du canal !
+                                            </p>
+                                            <p class="text-gray-400 text-xs mb-3">
+                                                Clique sur le bouton ci-dessous pour valider ta participation 👇
+                                            </p>
+                                            <button class="w-full bg-[#2b5278]/50 hover:bg-[#2b5278] border border-[#229ED9]/30 text-white font-bold text-xs py-2 rounded flex items-center justify-center gap-2 transition-colors mb-2 cursor-pointer">
+                                                <span>🎲 Je participe</span>
+                                                <span class="material-symbols-outlined text-xs">touch_app</span>
+                                            </button>
+                                        </div>
+                                        <div class="px-3 pb-2 flex justify-end items-center gap-1">
+                                            <span class="text-[10px] text-gray-500">14:05</span>
+                                            <span class="material-symbols-outlined text-[10px] text-gray-500">done_all</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex justify-center mt-4">
+                                        <div class="flex items-center gap-2 bg-[#17212b] px-3 py-1.5 rounded-full border border-[#2b5278]/30 animate-pulse">
+                                            <div class="w-2 h-2 rounded-full bg-primary"></div>
+                                            <span class="text-[10px] text-primary font-bold">Agence Influence écrit...</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Footer -->
+                                <div class="bg-[#17212b] p-3 border-t border-[#0e1621] flex justify-center cursor-pointer hover:bg-[#1c2633] transition-colors">
+                                    <span class="text-primary text-xs font-bold uppercase tracking-wider">MUTE</span>
+                                </div>
+                            </div>
+                             <!-- Floating Stat -->
+                            <div class="absolute -bottom-5 -right-5 z-20 bg-[#1A1A1A] border border-white/10 p-4 rounded-xl shadow-[0_0_30px_rgba(249,79,64,0.2)] flex flex-col gap-1 items-center">
+                                <span class="text-[10px] uppercase text-text-muted font-bold tracking-widest">Taux d'ouverture</span>
+                                <div class="text-2xl font-black text-[#229ED9] metallic-text">68.4%</div>
+                                <div class="flex items-center gap-1 text-[10px] text-white bg-primary/20 px-1.5 py-0.5 rounded border border-primary/30">
+                                    <span class="material-symbols-outlined text-xs">rocket_launch</span> vs email (20%)
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Comparison Table -->
+        <section class="py-20 bg-bg-main">
+            <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-black text-white">Le modèle cassé vs. Notre modèle</h2>
+                </div>
+                
+                <div class="overflow-hidden rounded-xl border border-white/10 shadow-[0_0_20px_rgba(249,79,64,0.05)]">
+                    <div class="grid grid-cols-3 bg-[#1A1A1A] p-4 text-sm font-bold text-white border-b border-white/20">
+                        <div class="col-span-1">Critères</div>
+                        <div class="col-span-1 text-center">Agences Classiques</div>
+                        <div class="col-span-1 text-center text-primary uppercase tracking-wider">Agence Influence</div>
+                    </div>
+                    <div class="divide-y divide-white/5 bg-[#0D0D0D]">
+                        <div class="grid grid-cols-3 p-4 items-center">
+                            <div class="col-span-1 font-medium text-white">Frais mensuels fixes</div>
+                            <div class="col-span-1 text-center text-red-500 font-bold">2000€ - 5000€</div>
+                            <div class="col-span-1 text-center text-white font-bold text-lg">0€</div>
+                        </div>
+                        <div class="grid grid-cols-3 p-4 items-center">
+                            <div class="col-span-1 font-medium text-white">Risque financier</div>
+                            <div class="col-span-1 text-center text-red-500 font-bold">100% pour toi</div>
+                            <div class="col-span-1 text-center text-white font-bold">0% (Partagé)</div>
+                        </div>
+                        <div class="grid grid-cols-3 p-4 items-center">
+                            <div class="col-span-1 font-medium text-white">Motivation</div>
+                            <div class="col-span-1 text-center text-text-muted">Faible (Payé au mois)</div>
+                            <div class="col-span-1 text-center text-primary font-bold uppercase tracking-tight">Guerrière (Commission)</div>
+                        </div>
+                        <div class="grid grid-cols-3 p-4 items-center">
+                            <div class="col-span-1 font-medium text-white">Rapidité d'exécution</div>
+                            <div class="col-span-1 text-center text-text-muted">Lente</div>
+                            <div class="col-span-1 text-center text-white font-bold">Immédiate</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gains Simulator -->
+        <section id="gains" class="py-20 bg-[#141414] relative overflow-hidden">
+            <div class="absolute inset-0 opacity-5 bg-[radial-gradient(#FFFFFF_1px,transparent_1px)] [background-size:20px_20px]"></div>
+            
+            <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="rounded-2xl bg-black/40 border border-white/10 p-8 md:p-12 shadow-2xl backdrop-blur-sm">
+                    <div class="grid md:grid-cols-2 gap-12">
+                        <div class="flex flex-col justify-center">
+                            <h2 class="text-3xl font-black text-white mb-4">Simule tes gains</h2>
+                            <p class="text-text-muted mb-8">
+                                Regarde ce qu'il se passe quand on applique notre méthode de clips viraux + funnel optimisé sur ton audience actuelle.
+                            </p>
+                            
+                            <div class="space-y-6">
+                                <div>
+                                    <div class="flex justify-between text-sm font-bold text-white mb-2">
+                                        <span>Ton CA Mensuel Actuel</span>
+                                        <span class="text-primary">10 000€</span>
+                                    </div>
+                                    <input type="range" min="1000" max="100000" value="10000" class="w-full accent-primary">
+                                </div>
+                                <div>
+                                    <div class="flex justify-between text-sm font-bold text-white mb-2">
+                                        <span>Potentiel Viralité</span>
+                                        <span class="text-primary">Explosif</span>
+                                    </div>
+                                    <input type="range" min="1" max="10" value="8" class="w-full accent-primary">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex flex-col items-center justify-center bg-black/60 rounded-xl p-8 border border-white/10 text-center relative overflow-hidden">
+                            <div class="absolute top-0 right-0 w-24 h-24 bg-primary/20 blur-[40px] rounded-full"></div>
+                            <p class="text-text-muted font-medium mb-2 uppercase text-xs tracking-widest">CA Estimé après 90 jours</p>
+                            <h3 class="text-5xl lg:text-6xl font-black text-white mb-4 tracking-tight">38 400€</h3>
+                            <div class="flex items-center gap-2 text-primary bg-primary/10 px-3 py-1 rounded-full text-sm font-bold border border-primary/20">
+                                <span class="material-symbols-outlined text-sm">trending_up</span>
+                                <span>+284% de croissance</span>
+                            </div>
+                            <button class="mt-8 w-full rounded bg-primary py-3 font-bold text-white hover:bg-primary-hover transition-colors shadow-glow border border-primary">
+                                Commencer maintenant
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section id="faq" class="py-20 bg-bg-main">
+            <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-black text-white text-center mb-12">Questions Fréquentes</h2>
+                <div class="space-y-4">
+                    <details class="group rounded-xl border border-white/10 bg-[#1A1A1A] transition-all duration-300 hover:border-primary/50 open:border-primary open:bg-[#202020] open:shadow-glow-subtle">
+                        <summary class="flex w-full cursor-pointer list-none items-center justify-between p-6 [&::-webkit-details-marker]:hidden">
+                            <div class="flex items-center gap-4">
+                                <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary border border-primary/20 transition-colors group-hover:bg-primary/20 group-open:bg-primary group-open:text-white shadow-glow-subtle">
+                                    <span class="material-symbols-outlined">payments</span>
+                                </div>
+                                <span class="font-bold text-white text-lg">Combien ça coûte vraiment ?</span>
+                            </div>
+                            <span class="material-symbols-outlined text-text-muted transition-transform duration-300 group-open:rotate-180 group-hover:text-primary">expand_more</span>
+                        </summary>
+                        <div class="px-6 pb-6 pt-0">
+                            <div class="border-t border-white/10 pt-4 text-text-muted text-sm leading-relaxed">
+                                Zéro euro de votre poche. Nous prenons uniquement un pourcentage sur le chiffre d'affaires <strong class="text-white">supplémentaire</strong> que nous générons grâce à nos actions. Si on ne vend pas plus, on ne gagne rien.
+                            </div>
+                        </div>
+                    </details>
+                    <details class="group rounded-xl border border-white/10 bg-[#1A1A1A] transition-all duration-300 hover:border-primary/50 open:border-primary open:bg-[#202020] open:shadow-glow-subtle">
+                        <summary class="flex w-full cursor-pointer list-none items-center justify-between p-6 [&::-webkit-details-marker]:hidden">
+                            <div class="flex items-center gap-4">
+                                <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary border border-primary/20 transition-colors group-hover:bg-primary/20 group-open:bg-primary group-open:text-white shadow-glow-subtle">
+                                    <span class="material-symbols-outlined">hub</span>
+                                </div>
+                                <span class="font-bold text-white text-lg">Quels réseaux gérez-vous ?</span>
+                            </div>
+                            <span class="material-symbols-outlined text-text-muted transition-transform duration-300 group-open:rotate-180 group-hover:text-primary">expand_more</span>
+                        </summary>
+                        <div class="px-6 pb-6 pt-0">
+                            <div class="border-t border-white/10 pt-4 text-text-muted text-sm leading-relaxed">
+                                Nous sommes experts en format vertical court : <span class="text-white">TikTok, Instagram Reels et YouTube Shorts</span>. C'est là que se trouve la viralité organique aujourd'hui. Nous gérons aussi les communautés Discord/Telegram pour la conversion.
+                            </div>
+                        </div>
+                    </details>
+                    <details class="group rounded-xl border border-white/10 bg-[#1A1A1A] transition-all duration-300 hover:border-primary/50 open:border-primary open:bg-[#202020] open:shadow-glow-subtle">
+                        <summary class="flex w-full cursor-pointer list-none items-center justify-between p-6 [&::-webkit-details-marker]:hidden">
+                            <div class="flex items-center gap-4">
+                                <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary border border-primary/20 transition-colors group-hover:bg-primary/20 group-open:bg-primary group-open:text-white shadow-glow-subtle">
+                                    <span class="material-symbols-outlined">shield_person</span>
+                                </div>
+                                <span class="font-bold text-white text-lg">Est-ce que je perds le contrôle de mon image ?</span>
+                            </div>
+                            <span class="material-symbols-outlined text-text-muted transition-transform duration-300 group-open:rotate-180 group-hover:text-primary">expand_more</span>
+                        </summary>
+                        <div class="px-6 pb-6 pt-0">
+                            <div class="border-t border-white/10 pt-4 text-text-muted text-sm leading-relaxed">
+                                Jamais. Vous validez la ligne éditoriale au début. Ensuite, nous sommes autonomes sur le montage et la publication, mais vous gardez un <strong class="text-white">droit de veto absolu</strong>.
+                            </div>
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- Form Section -->
+        <section id="contact" class="py-20 relative overflow-hidden bg-bg-main border-t border-white/5">
+            <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10"></div>
+            <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-gradient-to-t from-primary/10 to-transparent pointer-events-none"></div>
+
+            <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid lg:grid-cols-5 gap-0 rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-[#141414]">
+                    <div class="lg:col-span-5 p-8 md:p-12 relative">
+                        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent opacity-80"></div>
+                        
+                        <div class="text-center mb-10">
+                            <h2 class="text-3xl md:text-5xl font-black text-white mb-6 uppercase tracking-tight">
+                                POSTULE <span class="metallic-text">MAINTENANT</span>
+                            </h2>
+                            <p class="text-text-muted max-w-xl mx-auto text-lg">
+                                Nous sélectionnons nos partenaires avec soin. Si tu es prêt à scaler, remplis ce formulaire.
+                            </p>
+                        </div>
+
+                        <form class="space-y-6 max-w-2xl mx-auto">
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div class="space-y-2">
+                                    <label class="text-xs font-bold text-white uppercase tracking-widest ml-1">Prénom / Pseudo</label>
+                                    <div class="relative group">
+                                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                            <span class="material-symbols-outlined text-gray-500 group-focus-within:text-primary transition-colors">person</span>
+                                        </div>
+                                        <input type="text" class="block w-full rounded-lg border-white/10 bg-black/40 pl-10 pr-3 py-3 text-white placeholder-gray-600 focus:border-primary focus:ring-1 focus:ring-primary sm:text-sm transition-all shadow-inner" placeholder="Ton nom" required>
+                                    </div>
+                                </div>
+                                <div class="space-y-2">
+                                    <label class="text-xs font-bold text-white uppercase tracking-widest ml-1">Email</label>
+                                    <div class="relative group">
+                                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                            <span class="material-symbols-outlined text-gray-500 group-focus-within:text-primary transition-colors">mail</span>
+                                        </div>
+                                        <input type="email" class="block w-full rounded-lg border-white/10 bg-black/40 pl-10 pr-3 py-3 text-white placeholder-gray-600 focus:border-primary focus:ring-1 focus:ring-primary sm:text-sm transition-all shadow-inner" placeholder="ton@email.com" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                             <div class="space-y-2">
+                                <label class="text-xs font-bold text-white uppercase tracking-widest ml-1">
+                                    Téléphone / WhatsApp <span class="text-gray-500 normal-case tracking-normal">(Optionnel)</span>
+                                </label>
+                                <div class="relative group">
+                                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                        <span class="material-symbols-outlined text-gray-500 group-focus-within:text-primary transition-colors">call</span>
+                                    </div>
+                                    <input type="tel" class="block w-full rounded-lg border-white/10 bg-black/40 pl-10 pr-3 py-3 text-white placeholder-gray-600 focus:border-primary focus:ring-1 focus:ring-primary sm:text-sm transition-all shadow-inner" placeholder="+33 6 ...">
+                                </div>
+                            </div>
+
+                            <div class="space-y-2">
+                                <label class="text-xs font-bold text-white uppercase tracking-widest ml-1">Ton offre en une phrase</label>
+                                <div class="relative group">
+                                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                        <span class="material-symbols-outlined text-gray-500 group-focus-within:text-primary transition-colors">lightbulb</span>
+                                    </div>
+                                    <input type="text" class="block w-full rounded-lg border-white/10 bg-black/40 pl-10 pr-3 py-3 text-white placeholder-gray-600 focus:border-primary focus:ring-1 focus:ring-primary sm:text-sm transition-all shadow-inner" placeholder="Je vends X à Y pour Z..." required>
+                                </div>
+                            </div>
+
+                            <div class="space-y-2">
+                                <label class="text-xs font-bold text-white uppercase tracking-widest ml-1">Message</label>
+                                <div class="relative group">
+                                    <textarea rows="4" class="block w-full rounded-lg border-white/10 bg-black/40 p-4 text-white placeholder-gray-600 focus:border-primary focus:ring-1 focus:ring-primary sm:text-sm transition-all shadow-inner" placeholder="Détaille tes objectifs et ta situation actuelle..." required></textarea>
+                                </div>
+                            </div>
+
+                            <div class="pt-4">
+                                <button type="submit" class="w-full flex items-center justify-center gap-2 rounded-lg bg-primary px-8 py-4 text-lg font-black uppercase text-white transition-all hover:bg-primary-hover hover:scale-[1.01] hover:shadow-glow border border-primary shadow-[0_0_20px_rgba(249,79,64,0.4)]">
+                                    <span>Envoyer le message</span>
+                                    <span class="material-symbols-outlined font-bold">arrow_forward</span>
+                                </button>
+                                <p class="mt-4 text-center text-xs text-gray-500 flex items-center justify-center gap-1.5 opacity-70">
+                                    <span class="material-symbols-outlined text-sm">verified_user</span>
+                                    Pas de spam, pas de séquences automatiques. On te répond à la main.
+                                </p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="border-t border-white/10 bg-[#0D0D0D] py-12 text-center text-sm">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col items-center gap-6">
+            <div class="flex items-center gap-2 mb-4">
+                 <div class="flex h-6 w-6 items-center justify-center rounded bg-primary text-white border border-primary shadow-glow">
+                    <span class="material-symbols-outlined text-sm">bolt</span>
+                </div>
+                <span class="font-bold text-white tracking-widest">AGENCE INFLUENCE</span>
+            </div>
+            <div class="flex flex-wrap justify-center gap-8 text-gray-500">
+                <a href="#" class="hover:text-primary transition-colors">Mentions Légales</a>
+                <a href="#" class="hover:text-primary transition-colors">CGV</a>
+                <a href="#contact" class="hover:text-primary transition-colors">Contact</a>
+            </div>
+            <p class="text-gray-600">
+                © 2024 Agence Influence. Tous droits réservés. Prêt pour la guerre ?
+            </p>
+        </div>
+    </footer>
+
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>
