@@ -26,9 +26,9 @@ if ($token) {
 
     try {
         $response = Invoke-RestMethod -Uri "https://api.github.com/user/repos" -Method Post -Headers $headers -Body $body -ContentType "application/json"
-        Write-Host "✓ Repo créé: $($response.html_url)" -ForegroundColor Green
+        Write-Host "Repo cree: $($response.html_url)" -ForegroundColor Green
     } catch {
-        Write-Host "✗ Erreur: $_" -ForegroundColor Red
+        Write-Host "Erreur: $_" -ForegroundColor Red
         Write-Host "Créez le repo manuellement sur: https://github.com/new" -ForegroundColor Yellow
         Write-Host "Nom: $repoName" -ForegroundColor Yellow
         Read-Host "Appuyez sur Entrée une fois créé"
@@ -45,9 +45,9 @@ if ($token) {
 Write-Host "`n[2/4] Push du code vers GitHub..." -ForegroundColor Yellow
 git push -u origin main
 if ($LASTEXITCODE -eq 0) {
-    Write-Host "✓ Code poussé avec succès!" -ForegroundColor Green
+    Write-Host "Code pousse avec succes!" -ForegroundColor Green
 } else {
-    Write-Host "✗ Erreur lors du push" -ForegroundColor Red
+    Write-Host "Erreur lors du push" -ForegroundColor Red
     exit 1
 }
 
@@ -64,9 +64,9 @@ Write-Host "Vous allez être invité à vous connecter à Vercel..." -Foreground
 vercel --prod --yes
 
 if ($LASTEXITCODE -eq 0) {
-    Write-Host "`n✓ Déploiement terminé avec succès!" -ForegroundColor Green
+    Write-Host "`nDeploiement termine avec succes!" -ForegroundColor Green
     Write-Host "Repo GitHub: https://github.com/$username/$repoName" -ForegroundColor Cyan
-    Write-Host "Vérifiez votre dashboard Vercel pour l'URL" -ForegroundColor Cyan
+    Write-Host "Verifiez votre dashboard Vercel pour l'URL" -ForegroundColor Cyan
 } else {
     Write-Host "`nDéployez manuellement sur: https://vercel.com/new" -ForegroundColor Yellow
     Write-Host "Importez le repo: $username/$repoName" -ForegroundColor Cyan
