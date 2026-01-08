@@ -987,15 +987,31 @@
         const viraliteIndex = Math.min(Math.floor((viralite - 1) / 2.5), 4);
         document.getElementById('viralite-display').textContent = viraliteLabels[viraliteIndex];
         
-        // Calcul du CA estimé (formule basée sur viralité et CA actuel)
-        const multiplicateur = 1 + (viralite * 0.35); // Entre 1.35x et 4.5x selon viralité
-        const caEstime = caActuel * multiplicateur;
-        const croissance = ((caEstime - caActuel) / caActuel) * 100;
+        // Calcul du CA estimé avec progression réaliste selon la viralité
+        // Formule progressive : faible croissance pour faible viralité, croissance modérée pour moyenne, etc.
+        let pourcentageCroissance;
+        
+        if (viralite <= 3) {
+            // Faible viralité : +15% à +35%
+            pourcentageCroissance = 15 + (viralite - 1) * 10;
+        } else if (viralite <= 6) {
+            // Moyenne viralité : +40% à +80%
+            pourcentageCroissance = 40 + (viralite - 4) * 13.33;
+        } else if (viralite <= 8) {
+            // Élevée viralité : +90% à +150%
+            pourcentageCroissance = 90 + (viralite - 7) * 30;
+        } else {
+            // Très élevée/Explosive : +160% à +220%
+            pourcentageCroissance = 160 + (viralite - 9) * 30;
+        }
+        
+        const caEstime = caActuel * (1 + pourcentageCroissance / 100);
+        const croissance = Math.round(pourcentageCroissance);
         
         document.getElementById('ca-estime').textContent = formatCurrency(caEstime);
         document.getElementById('croissance-display').innerHTML = `
             <span class="material-symbols-outlined text-sm">trending_up</span>
-            <span>+${Math.round(croissance)}% de croissance</span>
+            <span>+${croissance}% de croissance</span>
         `;
     }
     
