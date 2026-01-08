@@ -5,7 +5,7 @@ $repoName = "agence-influence"
 $username = "OuaisOuais83"
 
 Write-Host "========================================" -ForegroundColor Cyan
-Write-Host "  DEPLOIEMENT AGENCE INFLUENCE" -ForegroundColor Cyan
+Write-Host "  DEPLOIEMENT FARMER LEAGUE" -ForegroundColor Cyan
 Write-Host "========================================" -ForegroundColor Cyan
 
 # ÉTAPE 1: Créer le repo GitHub
@@ -36,7 +36,7 @@ try {
         }
         $body = @{
             name = $repoName
-            description = "Agence Influence - Landing page pour agence de performance"
+            description = "Farmer League - Landing page pour agence de performance"
             private = $false
         } | ConvertTo-Json
         
