@@ -113,9 +113,11 @@
     <!-- Header -->
     <header class="sticky top-0 z-50 w-full border-b border-white/5 bg-bg-main/80 backdrop-blur-md">
         <div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center gap-2">
-                <img src="/logo.svg" alt="Farmer League" class="h-8 w-auto">
-                <h1 class="text-xl font-bold tracking-tight text-white">FARMER LEAGUE</h1>
+            <div class="flex items-center gap-3">
+                <div class="flex items-center justify-center h-10 w-10 rounded-lg bg-primary border border-primary/30 shadow-glow">
+                    <span class="text-white font-black text-lg leading-none">FL</span>
+                </div>
+                <h1 class="text-xl font-black tracking-tight text-white">FARMER LEAGUE</h1>
             </div>
             <nav class="hidden md:flex items-center gap-8">
                 <a class="text-sm font-medium text-text-muted hover:text-primary transition-colors" href="#clips">Clips</a>
@@ -776,16 +778,16 @@
                                 <div>
                                     <div class="flex justify-between text-sm font-bold text-white mb-2">
                                         <span>Ton CA Mensuel Actuel</span>
-                                        <span class="text-primary">10 000€</span>
+                                        <span class="text-primary" id="ca-actuel-display">10 000€</span>
                                     </div>
-                                    <input type="range" min="1000" max="100000" value="10000" class="w-full accent-primary">
+                                    <input type="range" id="ca-actuel" min="1000" max="100000" step="1000" value="10000" class="w-full accent-primary">
                                 </div>
                                 <div>
                                     <div class="flex justify-between text-sm font-bold text-white mb-2">
                                         <span>Potentiel Viralité</span>
-                                        <span class="text-primary">Explosif</span>
+                                        <span class="text-primary" id="viralite-display">Élevé</span>
                                     </div>
-                                    <input type="range" min="1" max="10" value="8" class="w-full accent-primary">
+                                    <input type="range" id="viralite" min="1" max="10" step="1" value="8" class="w-full accent-primary">
                                 </div>
                             </div>
                         </div>
@@ -793,8 +795,8 @@
                         <div class="flex flex-col items-center justify-center bg-black/60 rounded-xl p-8 border border-white/10 text-center relative overflow-hidden">
                             <div class="absolute top-0 right-0 w-24 h-24 bg-primary/20 blur-[40px] rounded-full"></div>
                             <p class="text-text-muted font-medium mb-2 uppercase text-xs tracking-widest">CA Estimé après 90 jours</p>
-                            <h3 class="text-5xl lg:text-6xl font-black text-white mb-4 tracking-tight">38 400€</h3>
-                            <div class="flex items-center gap-2 text-primary bg-primary/10 px-3 py-1 rounded-full text-sm font-bold border border-primary/20">
+                            <h3 class="text-5xl lg:text-6xl font-black text-white mb-4 tracking-tight" id="ca-estime">38 400€</h3>
+                            <div class="flex items-center gap-2 text-primary bg-primary/10 px-3 py-1 rounded-full text-sm font-bold border border-primary/20" id="croissance-display">
                                 <span class="material-symbols-outlined text-sm">trending_up</span>
                                 <span>+284% de croissance</span>
                             </div>
@@ -955,7 +957,9 @@
     <footer class="border-t border-white/10 bg-[#0D0D0D] py-12 text-center text-sm">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col items-center gap-6">
             <div class="flex items-center gap-2 mb-4">
-                 <img src="/logo.png" alt="Farmer League" class="h-6 w-auto">
+                <div class="flex items-center justify-center h-8 w-8 rounded bg-primary border border-primary/30 shadow-glow">
+                    <span class="text-white font-black text-sm leading-none">FL</span>
+                </div>
                 <span class="font-bold text-white tracking-widest">FARMER LEAGUE</span>
             </div>
             <div class="flex flex-wrap justify-center gap-8 text-gray-500">
@@ -970,5 +974,41 @@
     </footer>
 
 <script type="module" src="/index.tsx"></script>
+<script>
+    // Simulateur de gains
+    function formatCurrency(value) {
+        return new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(value);
+    }
+    
+    function updateSimulator() {
+        const caActuel = parseInt(document.getElementById('ca-actuel').value);
+        const viralite = parseInt(document.getElementById('viralite').value);
+        
+        // Mise à jour des affichages
+        document.getElementById('ca-actuel-display').textContent = formatCurrency(caActuel);
+        
+        const viraliteLabels = ['Faible', 'Moyen', 'Élevé', 'Très élevé', 'Explosif'];
+        const viraliteIndex = Math.min(Math.floor((viralite - 1) / 2.5), 4);
+        document.getElementById('viralite-display').textContent = viraliteLabels[viraliteIndex];
+        
+        // Calcul du CA estimé (formule basée sur viralité et CA actuel)
+        const multiplicateur = 1 + (viralite * 0.35); // Entre 1.35x et 4.5x selon viralité
+        const caEstime = caActuel * multiplicateur;
+        const croissance = ((caEstime - caActuel) / caActuel) * 100;
+        
+        document.getElementById('ca-estime').textContent = formatCurrency(caEstime);
+        document.getElementById('croissance-display').innerHTML = `
+            <span class="material-symbols-outlined text-sm">trending_up</span>
+            <span>+${Math.round(croissance)}% de croissance</span>
+        `;
+    }
+    
+    // Écouteurs d'événements
+    document.getElementById('ca-actuel').addEventListener('input', updateSimulator);
+    document.getElementById('viralite').addEventListener('input', updateSimulator);
+    
+    // Initialisation
+    updateSimulator();
+</script>
 </body>
 </html>
